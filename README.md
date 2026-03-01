@@ -4,6 +4,8 @@ A desktop application for visualizing network packet byte layout. Students fill 
 
 Built with [Dioxus](https://dioxuslabs.com/) (Rust) for the Spring 2026 Networks course.
 
+![Screenshot](assets/screenshot.png)
+
 ## Prerequisites (Ubuntu)
 
 Install the required system libraries:
