@@ -1,58 +1,49 @@
-# Development
+# Packet Builder
 
-Your new jumpstart project includes basic organization with an organized `assets` folder and a `components` folder.
-If you chose to develop with the router feature, you will also have a `views` folder.
+A desktop application for visualizing network packet byte layout. Students fill in Ethernet, IP, UDP, custom TCP header, and payload fields and see a color-coded hex dump of the resulting raw bytes. Hovering over hex bytes or header fields highlights the corresponding bytes and brings up the associated header diagram.
 
-```
-project/
-├─ assets/ # Any assets that are used by the app should be placed here
-├─ src/
-│  ├─ main.rs # The entrypoint for the app. It also defines the routes for the app.
-│  ├─ components/
-│  │  ├─ mod.rs # Defines the components module
-│  │  ├─ hero.rs # The Hero component for use in the home page
-│  │  ├─ echo.rs # The echo component uses server functions to communicate with the server
-│  ├─ views/ # The views each route will render in the app.
-│  │  ├─ mod.rs # Defines the module for the views route and re-exports the components for each route
-│  │  ├─ blog.rs # The component that will render at the /blog/:id route
-│  │  ├─ home.rs # The component that will render at the / route
-├─ Cargo.toml # The Cargo.toml file defines the dependencies and feature flags for your project
-```
+Built with [Dioxus](https://dioxuslabs.com/) (Rust) for the Spring 2026 Networks course.
 
-### Automatic Tailwind (Dioxus 0.7+)
+## Prerequisites (Ubuntu)
 
-As of Dioxus 0.7, there no longer is a need to manually install tailwind. Simply `dx serve` and you're good to go!
-
-Automatic tailwind is supported by checking for a file called `tailwind.css` in your app's manifest directory (next to Cargo.toml). To customize the file, use the dioxus.toml:
-
-```toml
-[application]
-tailwind_input = "my.css"
-tailwind_output = "assets/out.css"
-```
-
-### Tailwind Manual Install
-
-To use tailwind plugins or manually customize tailwind, you can can install the Tailwind CLI and use it directly.
-
-1. Install npm: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
-2. Install the Tailwind CSS CLI: https://tailwindcss.com/docs/installation/tailwind-cli
-3. Run the following command in the root of the project to start the Tailwind CSS compiler:
+Install the required system libraries:
 
 ```bash
-npx @tailwindcss/cli -i ./input.css -o ./assets/tailwind.css --watch
+sudo apt update
+sudo apt install \
+  libwebkit2gtk-4.1-dev \
+  build-essential \
+  curl \
+  wget \
+  file \
+  libxdo-dev \
+  libssl-dev \
+  libayatana-appindicator3-dev \
+  librsvg2-dev \
+  lld
 ```
 
-### Serving Your App
-
-Run the following command in the root of your project to start developing with the default platform:
+Install Rust (if not already installed):
 
 ```bash
-dx serve --platform desktop
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-To run for a different platform, use the `--platform platform` flag. E.g.
+## Running
+
 ```bash
-dx serve --platform desktop
+git clone https://github.com/cs-uh-3012-networks/packet-builder.git
+cd packet-builder
+cargo run --release
 ```
 
+If the app launches but shows a black window, set this environment variable and try again:
+
+```bash
+export WEBKIT_DISABLE_COMPOSITING_MODE=1
+cargo run --release
+```
+
+## AI Disclosure
+
+This repository was vibe coded with [Claude Code](https://claude.ai/code).
