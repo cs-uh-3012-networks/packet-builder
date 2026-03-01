@@ -1,0 +1,8 @@
+html {
+    font-size: calc(8px + 0.8vw);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
